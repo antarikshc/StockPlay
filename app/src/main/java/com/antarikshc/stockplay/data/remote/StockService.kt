@@ -1,4 +1,4 @@
-package com.antarikshc.stockplay.data
+package com.antarikshc.stockplay.data.remote
 
 import com.antarikshc.stockplay.helpers.Socket
 import com.antarikshc.stockplay.models.IncPrices

@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.round
 
 @Singleton
 class StockService @Inject constructor(private val socket: Socket, private val gson: Gson) {
@@ -22,6 +23,11 @@ class StockService @Inject constructor(private val socket: Socket, private val g
         return socket.connect(URL)
             .map {
                 gson.fromJson(it, object : TypeToken<List<IncPrices>>() {}.type) as List<IncPrices>
+            }
+            .map {
+                it.map { item ->
+                    item.copy(price = round(item.price * 1000) / 1000)
+                }
             }
             .flowOn(Dispatchers.IO)
     }

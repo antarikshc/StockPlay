@@ -14,7 +14,7 @@ interface StockDao {
 
 
     // Limit return values till Paging
-    @Query("SELECT * FROM stock_table ORDER BY updated_at DESC LIMIT 50")
+    @Query("SELECT * FROM stock_table ORDER BY name ASC LIMIT 50")
     fun getStocks(): Flow<List<Stock>>
 
 

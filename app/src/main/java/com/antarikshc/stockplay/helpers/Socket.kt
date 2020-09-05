@@ -4,6 +4,8 @@ import android.util.Log
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import okhttp3.*
+import javax.inject.Inject
+import javax.inject.Singleton
 
 
 /**
@@ -11,7 +13,8 @@ import okhttp3.*
  * Supports Coroutines Flow
  */
 @Suppress("EXPERIMENTAL_API_USAGE")
-class Socket(private val client: OkHttpClient) {
+@Singleton
+class Socket @Inject constructor(private val client: OkHttpClient) {
 
     companion object {
         private val TAG = Socket::class.java.simpleName

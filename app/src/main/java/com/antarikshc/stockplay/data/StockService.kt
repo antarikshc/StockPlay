@@ -8,8 +8,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class StockService(private val socket: Socket, private val gson: Gson) {
+@Singleton
+class StockService @Inject constructor(private val socket: Socket, private val gson: Gson) {
 
     companion object {
         const val URL = "ws://stocks.mnet.website"
